@@ -32,7 +32,7 @@ class AnnouncedLgaResultController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function sumLgaResult($id){
-        $uniqueID = Polling_unit::where('lga_id',$id);
+        $uniqueID = Polling_unit::where('lga_id',$id)->get();
         $resultArray =[];
         $partiesArray = [];
         $parties = Party::all();
