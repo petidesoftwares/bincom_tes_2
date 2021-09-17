@@ -54,7 +54,7 @@ class AnnouncedLgaResultController extends Controller
             $index++;
         }
 
-        return response()->json(['lga_result'=>$resultArray]);
+        return response()->json(['lga_result'=>$uniqueID]);
     }
 
     /**
