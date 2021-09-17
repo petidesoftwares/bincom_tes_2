@@ -33,7 +33,7 @@ class AnnouncedLgaResultController extends Controller
      */
     public function sumLgaResult($id){
         $uniqueID = Polling_unit::where('lga_id',$id)->get();
-        $resultArray =[];
+        $scoreArray =[];
         $partiesArray = [];
         $parties = Party::all();
         for ($i = 0; $i<count($parties); $i++){
@@ -44,14 +44,14 @@ class AnnouncedLgaResultController extends Controller
            $resultObj = Announced_pu_results::where('polling_unit_uniqueid',$value->uniqueid)->get();
             $partyScore = 0;
            foreach ($resultObj as $key2=>$score){
-//               $resultArray[$index] = $score;
                 if($partiesArray[$index] === $score->party_abbreviation){
                     $partyScore +=$score->party_score;
-                    $resultArray[$score->party_abbreviation] += $partyScore;
+                    $scoreArray[$index] += $partyScore;
                 }
                $index++;
            }
         }
+        $resultArray =[$partiesArray,$scoreArray];
 
         return response()->json(['lga_result'=>$resultArray]);
     }
