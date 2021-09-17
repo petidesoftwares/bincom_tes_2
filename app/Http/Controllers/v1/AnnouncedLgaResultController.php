@@ -43,15 +43,13 @@ class AnnouncedLgaResultController extends Controller
         foreach ($uniqueID as $key=>$value){
            $resultObj = Announced_pu_results::where('polling_unit_uniqueid',$value->uniqueid)->get();
             $partyScore = 0;
-//           foreach ($resultObj as $score){
-//            if($partiesArray[$index] === $score->party_abbreviation){
-//                $partyScore +=$score->party_score;
-//                $resultArray[$score->party_abbreviation] += $partyScore;
-//            }
-//               $index++;
-//           }
-            $resultArray[$index] = $resultObj;
-            $index++;
+           foreach ($resultObj as $key2=>$score){
+                if($partiesArray[$index] === $score->party_abbreviation){
+                    $partyScore +=$score->party_score;
+                    $resultArray[$score->party_abbreviation] += $partyScore;
+                }
+               $index++;
+           }
         }
 
         return response()->json(['lga_result'=>$resultArray]);
