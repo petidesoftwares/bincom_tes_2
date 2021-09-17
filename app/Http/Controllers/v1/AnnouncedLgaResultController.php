@@ -41,14 +41,15 @@ class AnnouncedLgaResultController extends Controller
         }
         $index = 0;
         foreach ($uniqueID as $key=>$value){
-           $resultObj = Announced_pu_results::where('polling_unit_uniqueid',$value->uniqueid)->get('party_abbreviation','party_score');
+           $resultObj = Announced_pu_results::where('polling_unit_uniqueid',$value->uniqueid)->get();
             $partyScore = 0;
            foreach ($resultObj as $key2=>$score){
-               $resultArray[$index] = $score;
-//                if($partiesArray[$index] === $score->party_abbreviation){
-//                    $partyScore +=$score->party_score;
+//               $resultArray[$index] = $score;
+                if($partiesArray[$index] === $score->party_abbreviation){
+                    $partyScore +=$score->party_score;
+                    $resultArray[$index] = $partyScore;
 //                    $resultArray[$score->party_abbreviation] += $partyScore;
-//                }
+                }
                $index++;
            }
         }
