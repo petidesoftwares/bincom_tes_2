@@ -36,10 +36,11 @@ class AnnouncedLgaResultController extends Controller
         $resultArray =[];
         $partiesArray = [];
         $parties = Party::all();
+        $partiesArray = $parties;
         $partiesIndex = 0;
-        foreach ($parties as $party){
-            $partiesArray[$partiesIndex] = $party->party_abbreviation;
-        }
+//        foreach ($parties as $party){
+//            $partiesArray[$partiesIndex] = $party->party_abbreviation;
+//        }
         $index = 0;
         foreach ($uniqueID as $key=>$value){
            $resultObj = Announced_pu_results::where('polling_unit_uniqueid',$value)->get();
@@ -53,7 +54,7 @@ class AnnouncedLgaResultController extends Controller
            }
         }
 
-        return response()->json(['lga_result'=>$resultArray]);
+        return response()->json(['lga_result'=>$partiesArray]);
     }
 
     /**
