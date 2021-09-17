@@ -45,8 +45,8 @@ class AnnouncedLgaResultController extends Controller
             $partyScore = 0;
            foreach ($resultObj as $key2=>$score){
                 if($partiesArray[$index] === $score->party_abbreviation){
-                    $partyScore +=$score->party_score;
-                    $scoreArray[$index] += $partyScore;
+//                    $partyScore +=$score->party_score;
+                    $scoreArray[$key2] += $partyScore;
                 }
                $index++;
            }
