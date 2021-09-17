@@ -38,7 +38,7 @@ class AnnouncedLgaResultController extends Controller
         $parties = Party::all();
         $partiesIndex = 0;
         foreach ($parties as $key => $party){
-            $partiesArray[$partiesIndex] = $party->party_abbreviation;
+            $partiesArray[$partiesIndex] = $party->partyname;
         }
         $index = 0;
         foreach ($uniqueID as $key=>$value){
