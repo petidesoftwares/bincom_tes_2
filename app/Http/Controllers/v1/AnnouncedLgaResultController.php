@@ -36,7 +36,6 @@ class AnnouncedLgaResultController extends Controller
         $resultArray =[];
         $partiesArray = [];
         $parties = Party::all();
-        $partiesIndex = 0;
         for ($i = 0; $i<count($parties); $i++){
             $partiesArray[$i] = $parties[$i]->partyid;
         }
@@ -53,7 +52,7 @@ class AnnouncedLgaResultController extends Controller
            }
         }
 
-        return response()->json(['lga_result'=>$partiesArray]);
+        return response()->json(['lga_result'=>$resultArray]);
     }
 
     /**
