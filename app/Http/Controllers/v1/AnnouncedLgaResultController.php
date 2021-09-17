@@ -43,6 +43,7 @@ class AnnouncedLgaResultController extends Controller
         foreach ($uniqueID as $key=>$value){
            $resultObj = Announced_pu_results::where('polling_unit_uniqueid',$value->uniqueid)->get();
            $scoreArray[$index] = $resultObj;
+           $index++;
         }
 //        $resultArray =[$partiesArray,$scoreArray];
 
