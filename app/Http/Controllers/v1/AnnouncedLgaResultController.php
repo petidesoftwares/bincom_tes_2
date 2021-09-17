@@ -47,8 +47,7 @@ class AnnouncedLgaResultController extends Controller
 //               $resultArray[$index] = $score;
                 if($partiesArray[$index] === $score->party_abbreviation){
                     $partyScore +=$score->party_score;
-                    $resultArray[$index] = $partyScore;
-//                    $resultArray[$score->party_abbreviation] += $partyScore;
+                    $resultArray[$score->party_abbreviation] += $partyScore;
                 }
                $index++;
            }
