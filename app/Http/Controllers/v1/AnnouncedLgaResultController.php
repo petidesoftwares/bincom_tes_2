@@ -52,7 +52,7 @@ class AnnouncedLgaResultController extends Controller
            }
         }
 
-        return response()->json(['lga_result'=>$resultArray]);
+        return response()->json(['lga_result'=>$partiesArray]);
     }
 
     /**
